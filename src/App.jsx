@@ -8,6 +8,12 @@ const { Header, Content, Footer } = Layout;
 //导入scss
 import style from './css/app.scss'
 
+//导入组件
+import Home from './components/home/Home.jsx'
+import Movie from './components/movie/Movie.jsx'
+import About from './components/about/About.jsx' 
+
+
 
 export default class App extends React.Component {
   constructor(props) {
@@ -24,16 +30,18 @@ export default class App extends React.Component {
           <Menu
             theme="dark"
             mode="horizontal"
-            defaultSelectedKeys={['1']}
+            defaultSelectedKeys={[window.location.hash.split('/')[1]]}
             style={{ lineHeight: '64px' }}
           >
-            <Menu.Item key="1">首页</Menu.Item>
-            <Menu.Item key="2">电影</Menu.Item>
-            <Menu.Item key="3">关于</Menu.Item>
+            <Menu.Item key="home"><Link to='/home'>首页</Link></Menu.Item>
+            <Menu.Item key="movie"><Link to='/movie'>电影</Link></Menu.Item>
+            <Menu.Item key="about"><Link to='/about'>关于</Link></Menu.Item>
           </Menu>
         </Header>
         <Content style={{ background: '#fff' }}>
-          1233
+          <Route path='/home' component={Home}></Route>
+          <Route path='/movie' component={Movie}></Route>
+          <Route path='/about' component={About}></Route>
         </Content>
         <Footer style={{ textAlign: 'center' }}>CGWTQ ©2019 React Shop</Footer>
       </Layout>     
