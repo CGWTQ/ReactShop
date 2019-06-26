@@ -24,7 +24,7 @@ export default class App extends React.Component {
 
   render() {
     return <HashRouter>
-        <Layout className="layout" style={{height:'730px'}}>
+        <Layout className="layout" style={{height:'100%'}}>
         <Header>
           <div className={style.logo} />
           <Menu
@@ -38,7 +38,7 @@ export default class App extends React.Component {
             <Menu.Item key="about"><Link to='/about'>关于</Link></Menu.Item>
           </Menu>
         </Header>
-        <Content style={{ background: '#fff' }}>
+        <Content style={{ background: '#fff', }}>
           <Route path='/home' component={Home}></Route>
           <Route path='/movie' component={Movie}></Route>
           <Route path='/about' component={About}></Route>
