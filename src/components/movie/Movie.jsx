@@ -1,9 +1,14 @@
 import React from 'react'
 
-import { Layout, Menu,  Icon } from 'antd';
+//布局相关组件
+import { Layout, Menu } from 'antd';
+const {  Content, Sider } = Layout;
 
-const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+//路由相关组件
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+
+//movieList组件
+import movieList from './moiveList.jsx'
 
 export default class Movie extends React.Component {
     constructor(props) {
@@ -22,9 +27,9 @@ export default class Movie extends React.Component {
                         defaultSelectedKeys={['1']}
                         style={{ height: '100%', borderRight: 0 }}
                     >
-                        <Menu.Item key="1">正在热映</Menu.Item>
-                        <Menu.Item key="2">即将上映</Menu.Item>
-                        <Menu.Item key="3">Top 250</Menu.Item>
+                        <Menu.Item key="1"><Link to='/movie/in_theaters/1'>正在热映</Link></Menu.Item>
+                        <Menu.Item key="2"><Link to='/movie/comming_soon/1'>即将上映</Link></Menu.Item>
+                        <Menu.Item key="3"><Link to='/movie/top250/1'>Top 250</Link></Menu.Item>
                     </Menu>
                 </Sider>
                 <Layout style={{ paddingLeft:'1px' }}>
@@ -36,10 +41,11 @@ export default class Movie extends React.Component {
                             minHeight: 280,
                         }}
                     >
-                        Content
+                        {/* 在 url 地址中提取参数，需要用到， this.props.match.params */}
+                        <Route path="/movie/:type/:page" component={movieList}></Route>
                     </Content>
                 </Layout>
             </Layout>
-            </div>
+        </div>
     }
 }
